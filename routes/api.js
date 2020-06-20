@@ -2,8 +2,15 @@ const express = require("express");
 const router = express.Router();
 const db = require("../model/Books");
 const axios = require("axios");
-require("dotenv").config();
-const API_KEY = process.env.API_KEY;
+var API_KEY;
+
+if(process.env.NODE_ENV === 'production'){
+    API_KEY = process.env.API_KEY;
+} else {
+    require("dotenv").config();
+    API_KEY = process.env.API_KEY;
+}
+
 
 // POST endpoint to get data from GOOGLE API
 router.post("/search", async (req,res) => {
