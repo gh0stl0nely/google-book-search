@@ -20,7 +20,7 @@ const mongoURL = process.env.MONGODB_URI || "mongodb://localhost:27017/googleBoo
 mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 if(process.env.NODE_ENV === 'production'){
-    app.use("client/build");
+    app.use(express.static("client/build"));
     app.get("*", (req,res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     })
