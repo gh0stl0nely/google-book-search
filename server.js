@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
-// const db = require("./model/Books");
+const path = require('path');
+
 const PORT = process.env.PORT || 3001;
 
 // Configure input parser
@@ -17,16 +18,15 @@ app.use("/api", api_route);
 // Connect to MongoDB
 const mongoURL = process.env.MONGODB_URI || "mongodb://localhost:27017/googleBook";
 mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
-// db.Book.create({
-    // title: "KHOI",
-    // author: "123",
-    // "imageURL": "213",
-    // description: "213",
-    // link: "123123123"
-// }, function(){
-//     console.log("SUCESS")
-// });
 
+if(process.env.NODE_ENV === 'production'){
+    app.use("client/build");
+    app.get("*", (req,res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
+} else {
+    require("dotenv").config();
+}
 
 // Connect to PORT 
 app.listen(PORT, function(){

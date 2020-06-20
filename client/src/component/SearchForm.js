@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {Form, Button} from "react-bootstrap";
 
 function SearchForm(props){
@@ -13,7 +13,7 @@ function SearchForm(props){
                 <Form.Control onChange={props.handleInputChange} value={props.userInput.author} name="author" placeholder="Enter Author's Name" required/>
             </Form.Group>
             <Button style={{marginTop: "10px"}} variant="danger" type="submit">
-                Search Book
+                Search <i class="fa fa-search" aria-hidden="true"></i>
             </Button>
         </Form>
     )
