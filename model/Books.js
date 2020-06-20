@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 
 const BookSchema = new mongoose.Schema({
+    _id: Number,
+
     title : {
         type: String,
     },
     author : {
-        type: String
+        type: Array
     },
     imageURL: {
         type: String

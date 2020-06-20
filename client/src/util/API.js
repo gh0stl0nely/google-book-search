@@ -6,8 +6,20 @@ async function getSavedBooks(){
     return savedBooks;
 }
 
-// API call to retrieve books
+// API call to search for books given title and author
+async function searchNewBooks(title,author){
+    const newBooks = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${title}+inauthor:${author}&key=AIzaSyAPLFNPE-vYn4HZjnkqy0Jnzvc4luy3x9Y`);
+    return newBooks;
+}
+
+// API call to save book to database
+async function saveBookToDatabase(book){
+    return await axios.post("/api/books", book);
+}
+
 
 export {
-    getSavedBooks
+    getSavedBooks,
+    searchNewBooks,
+    saveBookToDatabase
 }

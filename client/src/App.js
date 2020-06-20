@@ -13,6 +13,7 @@ function App(){
     return (
         <Router>
             <Switch>
+                {/* Change this when done testing save page */}
                 <Route exact path="/">
                     <SearchPage />
                 </Route>
