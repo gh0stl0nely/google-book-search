@@ -5,9 +5,9 @@
   "proxy": "http://localhost:3001",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server.js",
+    "start": "nodemon server.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run start\" \"npm run client\"",
     "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
